@@ -3070,6 +3070,7 @@ int id matrix 0x7f080108
 int id message 0x7f080109
 int id middle 0x7f08010a
 int id mini 0x7f08010b
+int id modifyMatrikelnummer 0x7f0801f1
 int id month_grid 0x7f08010c
 int id month_navigation_bar 0x7f08010d
 int id month_navigation_fragment_toggle 0x7f08010e

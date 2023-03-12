@@ -11,6 +11,7 @@ drawable ic_launcher_background
 drawable ic_launcher_foreground
 id button
 id matrikelnummer
+id modifyMatrikelnummer
 id promptMatrikelnummer
 id promptServerReply
 id serverReply

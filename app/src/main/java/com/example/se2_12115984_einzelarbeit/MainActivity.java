@@ -9,11 +9,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.Arrays;
+
 public class MainActivity extends AppCompatActivity {
 
-    Button send;
-    TextView matrikelnummer;
-    public TextView antwort;
+    private Button send;
+    private Button modifyMatNr;
+    private TextView matrikelnummer;
+    private TextView antwort;
     private ServerConnection connection;
 
     @Override
@@ -21,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         send = findViewById(R.id.button);
+        modifyMatNr = findViewById(R.id.modifyMatrikelnummer);
         matrikelnummer = findViewById(R.id.matrikelnummer);
         antwort = findViewById(R.id.serverReply);
 
@@ -32,6 +36,44 @@ public class MainActivity extends AppCompatActivity {
                 (new Connector()).execute(nr);
             }
         });
+
+        modifyMatNr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String nr = matrikelnummer.getText().toString();
+                antwort.setText(cutPrimes(nr));
+            }
+        });
+    }
+
+    private String cutPrimes(String matrikelnummer){
+        char[] chars = matrikelnummer.toCharArray();
+        int[] ints = new int[chars.length];
+        for (int i = 0; i < chars.length; i++) {
+            ints[i] = chars[i] - '0';
+        }
+        Arrays.sort(ints);
+
+        String out = "";
+        for (int i : ints) {
+            if (!isPrime(i))
+                out+=i;
+        }
+
+        return out;
+    }
+
+    private boolean isPrime(int number){
+        if(number <= 1)
+            return false;
+        if(number %2 == 0 && number > 2)
+            return false;
+
+        for(int i = 3; i < (int)(Math.sqrt(number)); i += 2){
+            if(number%i == 0)
+                return false;
+        }
+        return true;
     }
 
     class Connector extends AsyncTask<String, String, ServerConnection> {
