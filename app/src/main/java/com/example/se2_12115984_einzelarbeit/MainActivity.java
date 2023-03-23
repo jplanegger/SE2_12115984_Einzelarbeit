@@ -52,13 +52,27 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < chars.length; i++) {
             ints[i] = chars[i] - '0';
         }
-        Arrays.sort(ints);
 
         String out = "";
+        Arrays.sort(ints);
+
+
         for (int i : ints) {
             if (!isPrime(i))
                 out+=i;
         }
+
+
+        /*for(int i = 0; i< ints.length; i++){
+            if(ints[i] %2==0){
+                out += ints[i];
+            }
+        }
+        for(int i = 0; i< ints.length; i++){
+            if(ints[i] %2!=0){
+                out += ints[i];
+            }
+        }*/
 
         return out;
     }
@@ -69,7 +83,9 @@ public class MainActivity extends AppCompatActivity {
         if(number %2 == 0 && number > 2)
             return false;
 
-        for(int i = 3; i < (int)(Math.sqrt(number)); i += 2){
+
+        for(int i = 3; i <= (int)(Math.sqrt(number)); i += 2){
+            Log.i("A_TAG", i + " " + number + "\n");
             if(number%i == 0)
                 return false;
         }
