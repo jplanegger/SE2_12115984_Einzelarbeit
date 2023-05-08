@@ -61,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
             if (!isPrime(i))
                 out+=i;
         }// LAPTOP COMMIT
+        // PC COMMIT
 
 
         /*for(int i = 0; i< ints.length; i++){
