@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         for (int i : ints) {
             if (!isPrime(i))
                 out+=i;
-        }
+        }// LAPTOP COMMIT
 
 
         /*for(int i = 0; i< ints.length; i++){
